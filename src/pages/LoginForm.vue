@@ -29,6 +29,7 @@
 </template>
 
 <script>
+
 export default {
   data () {
     return {
@@ -52,7 +53,8 @@ export default {
       this.$axios.post('api/tbusers/login', data)
         .then((response) => {
           if (response.data !== false) {
-            localStorage.setItem('accToken', this.token)
+            // localStorage.setItem('accToken', this.token)
+            this.$q.cookies.set('accToken', 'cookie_value')
             console.log('Logged in')
             this.$router.push('/')
           } else {

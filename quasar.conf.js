@@ -18,6 +18,15 @@ module.exports = function (ctx) {
     ],
     supportIE: true,
     build: {
+      '/api': ctx.dev
+        ? { // so on dev we'll have
+          target: 'http://localhost:3000',
+          changeOrigin: true
+        }
+        : { // and on build (production):
+          target: 'http://localhost:3000',
+          changeOrigin: true
+        },
       scopeHoisting: true,
       // vueRouterMode: 'history',
       // vueCompiler: true,
@@ -35,11 +44,20 @@ module.exports = function (ctx) {
     },
     devServer: {
       proxy: {
+        '/api': ctx.dev
+          ? { // so on dev we'll have
+            target: 'http://localhost:3000',
+            changeOrigin: true
+          }
+          : { // and on build (production):
+            target: 'http://localhost:3000',
+            changeOrigin: true
+          }
         // proxy all requests starting with /api to jsonplaceholder
-        '/api': {
-          target: 'http://localhost:3000',
-          changeOrigin: true
-        }
+        // '/api': {
+        //   target: 'http://localhost:3000',
+        //   changeOrigin: true
+        // }
       },
       // https: true,
       // port: 8080,
@@ -78,7 +96,8 @@ module.exports = function (ctx) {
       ],
       // Quasar plugins
       plugins: [
-        'Notify'
+        'Notify',
+        'Cookies'
       ]
       // iconSet: ctx.theme.mat ? 'material-icons' : 'ionicons'
       // i18n: 'de' // Quasar language

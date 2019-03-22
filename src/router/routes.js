@@ -1,17 +1,26 @@
+
+function loadLayout (component) {
+  return () => import(`layouts/${component}.vue`)
+}
+
+function loadPages (component) {
+  return () => import(`pages/${component}.vue`)
+}
+
 const routes = [
   {
     path: '/login',
-    component: () => import('layouts/Login.vue'),
+    component: loadLayout('Login'),
     children: [
-      { path: '', component: () => import('pages/LoginForm.vue') }
+      { path: '', component: loadPages('LoginForm') }
     ]
   },
   {
     path: '/',
-    component: () => import('layouts/MyLayout.vue'),
+    component: loadLayout('MyLayout'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') },
-      { path: '/user', component: () => import('pages/User.vue') }
+      { path: '', component: loadPages('Index') },
+      { path: '/user', component: loadPages('User') }
     ],
     meta: { requiresAuth: true }
   }
@@ -21,7 +30,7 @@ const routes = [
 if (process.env.MODE !== 'ssr') {
   routes.push({
     path: '*',
-    component: () => import('pages/Error404.vue')
+    component: loadPages('Error404')
   })
 }
 

@@ -36,11 +36,11 @@
         inset-delimiter
       >
         <q-list-header>Administracion</q-list-header>
-        <q-item @click.native="irDash()">
+        <q-item @click.native="url('/')">
           <q-item-side icon="school" />
           <q-item-main label="Dashboard" sublabel="Pantalla principal" />
         </q-item>
-        <q-item @click.native="irUser()">
+        <q-item @click.native="url('/user')">
           <q-item-side icon="code" />
           <q-item-main label="Usuarios" sublabel="Mantenimiento de usuario" />
         </q-item>
@@ -58,7 +58,6 @@
 </template>
 
 <script>
-import { openURL } from 'quasar'
 
 export default {
   name: 'MyLayout',
@@ -69,18 +68,13 @@ export default {
   },
   methods: {
     logout () {
-      localStorage.removeItem('accToken')
+      // localStorage.removeItem('accToken')
+      this.$q.cookies.remove('accToken')
       this.$router.push('/login')
     },
-    irDash () {
-      console.log('dashboard')
-      this.$router.replace('/')
-    },
-    irUser () {
-      console.log('user')
-      this.$router.replace('/user')
-    },
-    openURL
+    url (ruta) {
+      this.$router.replace(ruta)
+    }
   }
 }
 </script>
