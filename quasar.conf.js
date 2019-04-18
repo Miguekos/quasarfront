@@ -89,7 +89,13 @@ module.exports = function (ctx) {
         'QTd',
         'QTableColumns',
         'QDialog',
-        'QSelect'
+        'QSelect',
+        'QCard',
+        'QCardTitle',
+        'QCardMain',
+        'QCardMedia',
+        'QCardSeparator',
+        'QCardActions'
       ],
       directives: [
         'Ripple'

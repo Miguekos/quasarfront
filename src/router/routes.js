@@ -1,4 +1,3 @@
-
 function loadLayout (component) {
   return () => import(`layouts/${component}.vue`)
 }

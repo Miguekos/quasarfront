@@ -4,8 +4,7 @@
 
     <q-layout-header>
       <q-toolbar
-        color="primary"
-        :glossy="$q.theme === 'mat'"
+        color="secondary"
         :inverted="$q.theme === 'ios'"
       >
         <q-btn
@@ -19,10 +18,10 @@
         </q-btn>
 
         <q-toolbar-title>
-          Quasar App
-          <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
+          Serverkos
+          <div slot="subtitle">Running on Quasar{{ $q.version }}</div>
         </q-toolbar-title>
-        <q-btn flat round dense icon="logout" />
+        <q-btn flat round dense @click="logout()"  icon="logout" />
       </q-toolbar>
     </q-layout-header>
 
@@ -31,11 +30,28 @@
       :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null"
     >
       <q-list
+        style="padding-top: 0px;"
         no-border
         link
         inset-delimiter
       >
-        <q-list-header>Administracion</q-list-header>
+        <!-- <q-list-header>Administracion</q-list-header> -->
+        <q-card
+         color="tertiary"
+         square
+         text-color
+         >
+          <q-item>
+            <q-item-side avatar="/statics/icons/icon-128x128.png" />
+            <q-item-main>
+              <div contentClass>
+                <q-item-tile label>Admin</q-item-tile>
+                <q-item-tile sublabel>Subhead</q-item-tile>
+              </div>
+
+            </q-item-main>
+          </q-item>
+        </q-card>
         <q-item @click.native="url('/')">
           <q-item-side icon="school" />
           <q-item-main label="Dashboard" sublabel="Pantalla principal" />

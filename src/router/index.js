@@ -27,8 +27,6 @@ export default function (/* { store, ssrContext } */) {
   Router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
       // console.log(localStorage.getItem('accToken'))
-      var sesion = Cookies.has('accToken')
-      console.log(`Sesion: ${sesion}`)
       if (Cookies.has('accToken') !== true) {
         next({
           path: '/login',
