@@ -19,7 +19,8 @@ const routes = [
     component: loadLayout('MyLayout'),
     children: [
       { path: '', component: loadPages('Index') },
-      { path: '/user', component: loadPages('User') }
+      { path: '/user', component: loadPages('User') },
+      { path: '/clientes', component: loadPages('Client') }
     ],
     meta: { requiresAuth: true }
   }

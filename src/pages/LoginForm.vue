@@ -29,8 +29,9 @@
 </template>
 
 <script>
-
+const md5 = require('md5')
 export default {
+
   data () {
     return {
       loading: false,
@@ -48,12 +49,17 @@ export default {
     login () {
       let data = {
         email: this.email,
-        password: this.password
+        password: md5(this.password)
       }
-      this.$axios.post('api/tbusers/login', data)
+      this.$axios.post('api/users/login', data)
         .then((response) => {
           if (response.data !== false) {
-            // localStorage.setItem('accToken', this.token)
+            const guardaruser = {
+              id: response.data.id,
+              name: response.data.name,
+              email: response.data.email
+            }
+            localStorage.setItem('datadelusuario', JSON.stringify(guardaruser))
             this.$q.cookies.set('accToken', 'cookie_value')
             console.log('Logged in')
             this.$router.push('/')

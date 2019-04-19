@@ -67,6 +67,9 @@ module.exports = function (ctx) {
     // framework: 'all',
     framework: {
       components: [
+        'QChipsInput',
+        'QCheckbox',
+        'QSearch',
         'QLayout',
         'QLayoutHeader',
         'QLayoutDrawer',
@@ -95,7 +98,8 @@ module.exports = function (ctx) {
         'QCardMain',
         'QCardMedia',
         'QCardSeparator',
-        'QCardActions'
+        'QCardActions',
+        'QItemTile'
       ],
       directives: [
         'Ripple'
