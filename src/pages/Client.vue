@@ -1,6 +1,6 @@
 <template>
   <div>
-    <DataTableComp :titulo='titulo' :columns='columns' :datat='tableData'></DataTableComp>
+    <DataTableComp @actualizarcliente="getData()" :titulo='titulo' :columns='columns' :datat='tableData'></DataTableComp>
     <!-- <pre>{{ $data }}</pre> -->
   </div>
 
