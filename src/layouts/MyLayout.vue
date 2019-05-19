@@ -1,10 +1,12 @@
 <template>
   <!-- <q-layout view="lHh Lpr lFf"> -->
-  <q-layout view="hHr LpR lFf">
+  <q-layout view="hHh Lpr lFf">
     <q-layout-header>
       <q-toolbar
         color="secondary"
         :inverted="$q.theme === 'ios'"
+        glossy
+        shrink
       >
         <q-btn
           flat
@@ -20,13 +22,18 @@
           Prestamos
           <div slot="subtitle">Version {{ $q.version }}</div>
         </q-toolbar-title>
+        <q-search placeholder="Buscar" inverted v-model="search" color="none" />
         <q-btn flat round dense @click="logout()"  icon="logout" />
       </q-toolbar>
     </q-layout-header>
 
     <q-layout-drawer
+      :content-style="{padding: '20px'}"
+      side="left"
       v-model="leftDrawerOpen"
       :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null"
+      overlay
+      show-if-above
     >
       <q-list
         style="padding-top: 0px;"
@@ -74,17 +81,19 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+
   </q-layout>
 </template>
 
 <script>
-
 export default {
   name: 'MyLayout',
   data () {
     return {
+      search: '',
       usuario: [],
-      leftDrawerOpen: this.$q.platform.is.desktop
+      // leftDrawerOpen: this.$q.platform.is.desktop,
+      leftDrawerOpen: false
     }
   },
   methods: {

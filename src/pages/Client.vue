@@ -15,8 +15,8 @@ export default {
       {
         name: 'desc',
         required: true,
-        label: '#',
-        align: 'left',
+        label: '#ID',
+        align: 'right',
         field: 'id',
         sortable: true
       },

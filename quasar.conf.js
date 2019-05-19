@@ -67,6 +67,10 @@ module.exports = function (ctx) {
     // framework: 'all',
     framework: {
       components: [
+        'QInnerLoading',
+        'QSpinnerGears',
+        'QLayoutFooter',
+        'QPageSticky',
         'QChipsInput',
         'QCheckbox',
         'QSearch',

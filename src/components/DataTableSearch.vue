@@ -5,7 +5,7 @@
         <p class="caption">
           <strong class="q-headline text-bold"># {{ titulo }}</strong>
           <span style="float: right;">
-            <q-btn size="sm" color="secondary" label="nuevo" @click="customDialogModel = true"/>
+            <q-btn size="sm" color="secondary" label="nuevo" @click="customDialogModel = true"></q-btn>
           </span>
         </p>
         <q-table
@@ -26,19 +26,18 @@
             <!-- <div class="col"/> -->
           <!-- </template> -->
           <template slot="top-left" slot-scope="{}">
-            <q-search placeholder="Buscar" hide-underline v-model="filter" class="col-6"/>
+            <q-search placeholder="Buscar" hide-underline v-model="filter" class="col-6"></q-search>
           </template>
           <template slot="top-right" slot-scope="props">
             <!-- <q-btn @click="deleteCliente" color="secondary" flat label="Editar" class="q-mr-sm"/> -->
-            <q-btn color="negative" dense flat round icon="delete" @click="deleteRow"/>
+            <q-btn color="negative" dense flat round icon="delete" @click="deleteRow"></q-btn>
             <!-- <q-btn @click="deleteRow" color="secondary" flat label="Eliminar"/> -->
             <q-btn
               flat
               round
               dense
               :icon="props.inFullscreen ? 'fullscreen_exit' : 'fullscreen'"
-              @click="props.toggleFullscreen"
-            />
+              @click="props.toggleFullscreen"></q-btn>
           </template>
 
           <template>
@@ -47,8 +46,7 @@
                 <q-checkbox
                   v-if="props.multipleSelect"
                   v-model="props.selected"
-                  indeterminate-value="some"
-                />
+                  indeterminate-value="some"></q-checkbox>
               </q-th>
               <q-th v-for="col in props.cols" :key="col.name" :props="props">{{ col.label }}</q-th>
             </q-tr>
@@ -57,7 +55,7 @@
           <template slot="body" slot-scope="props">
             <q-tr :props="props">
               <q-td auto-width>
-                <q-checkbox color="primary" v-model="props.selected"/>
+                <q-checkbox color="primary" v-model="props.selected"></q-checkbox>
               </q-td>
               <q-td key="desc" :props="props">
                 <q-checkbox
@@ -65,8 +63,7 @@
                   v-model="props.expand"
                   checked-icon="remove"
                   unchecked-icon="add"
-                  class="q-mr-md"
-                />
+                  class="q-mr-md"></q-checkbox>
                 {{ props.row.id }}
               </q-td>
               <q-td key="nombre" :props="props">{{ props.row.nombre }}</q-td>
@@ -92,8 +89,7 @@
               color="secondary"
               class="q-mr-sm"
               :disable="props.isFirstPage"
-              @click="props.prevPage"
-            />
+              @click="props.prevPage"></q-btn>
             <div
               class="q-mr-sm"
               style="font-size: small"
@@ -105,8 +101,7 @@
               icon="redo"
               color="secondary"
               :disable="props.isLastPage"
-              @click="props.nextPage"
-            />
+              @click="props.nextPage"></q-btn>
           </div>
         </q-table>
       </div>
@@ -152,6 +147,7 @@ export default {
       if (deleteTotla === 0) {
         this.notifica('warning', 'delete', 'Debe selecionar alguno para poder eliminar', null)
       } else {
+        this.showTextLoading()
         this.$q.notify({
           color: 'secondary',
           icon: 'delete',
@@ -177,6 +173,7 @@ export default {
       this.$axios
         .delete(`/api/clientes/${item.id}`)
         .then(response => {
+          console.log(response)
           this.notifica('negative', 'delete', `Se elimino correctamente el cliente ${item.nombre}`, null)
         })
         .catch(error => {
@@ -184,6 +181,8 @@ export default {
           this.notifica('negative', 'delete', `Error controlado`, null)
         })
     }
+  },
+  created () {
   }
 }
 </script>
