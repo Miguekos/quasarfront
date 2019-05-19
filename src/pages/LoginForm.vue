@@ -77,7 +77,10 @@ export default {
 </script>
 
 <style scoped>
-.loginform {
+/* body {
+  background-image: url('/statics/fondo.jpg')
+} */
+/* .loginform {
   background-color: #365552;
-}
+} */
 </style>

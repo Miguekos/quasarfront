@@ -20,4 +20,7 @@ export default {
 </script>
 
 <style>
+body {
+  background-image: url('/statics/fondo.jpg')
+}
 </style>
