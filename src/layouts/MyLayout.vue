@@ -5,8 +5,6 @@
       <q-toolbar
         color="secondary"
         :inverted="$q.theme === 'ios'"
-        glossy
-        shrink
       >
         <q-btn
           flat
@@ -19,10 +17,10 @@
         </q-btn>
 
         <q-toolbar-title>
-          Prestamos
+          KosAdmin
           <div slot="subtitle">Version {{ $q.version }}</div>
         </q-toolbar-title>
-        <q-search placeholder="Buscar" inverted v-model="search" color="none" />
+        <q-search v-show="false" placeholder="Buscar" inverted v-model="search" color="none" />
         <q-btn flat round dense @click="logout()"  icon="logout" />
       </q-toolbar>
     </q-layout-header>
@@ -90,6 +88,7 @@ export default {
   name: 'MyLayout',
   data () {
     return {
+      onShow: false,
       search: '',
       usuario: [],
       // leftDrawerOpen: this.$q.platform.is.desktop,

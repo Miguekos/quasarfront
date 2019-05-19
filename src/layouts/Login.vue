@@ -19,8 +19,8 @@ export default {
 }
 </script>
 
-<style>
-body {
+<style scoped>
+/* body {
   background-image: url('/statics/fondo.jpg')
-}
+} */
 </style>
