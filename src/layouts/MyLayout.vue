@@ -79,7 +79,7 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-
+    {{ $data }}
   </q-layout>
 </template>
 
@@ -101,9 +101,6 @@ export default {
       this.$q.cookies.remove('accToken')
       this.$router.push('/login')
       localStorage.removeItem('datadelusuario')
-    },
-    url (ruta) {
-      this.$router.replace(ruta)
     }
   },
   created () {
