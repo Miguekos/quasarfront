@@ -51,7 +51,7 @@ export default {
         email: this.email,
         password: md5(this.password)
       }
-      this.$axios.post('api/users/login', data)
+      this.$axios.post('api/tbusers/login', data)
         .then((response) => {
           if (response.data !== false) {
             const guardaruser = {
@@ -78,6 +78,7 @@ export default {
 
 <style scoped>
 .loginform {
-  background-color: #365552;
+  /* background-color: #365552; */
+  background-image: url('/statics/fondo.jpg');
 }
 </style>

@@ -1,6 +1,8 @@
 <template>
   <div>
-    <DataTableComp :titulo='titulo' :columnas='columns' :datat='tableData'></DataTableComp>
+    <!-- <DataTableComp :titulo='titulo' :columnas='columns' :datat='tableData'></DataTableComp> -->
+    <DataTableComp @eliminarCliente="EliminarCliente()" @actualizarcliente="getData()" :urls='urls' :titulo='titulo' :columns='columns' :datat='tableData'></DataTableComp>
+
   </div>
 </template>
 
@@ -9,6 +11,11 @@ export default {
   data: () => ({
     titulo: 'Usuarios',
     tableData: [],
+    urls: [
+      {
+        base: '/api/tbusers/'
+      }
+    ],
     columns: [
       {
         name: 'desc',
@@ -43,7 +50,7 @@ export default {
   methods: {
     getData () {
       this.$axios
-        .get('/api/users')
+        .get('/api/tbusers')
         .then(response => {
           this.tableData = response.data
           console.log('Se cargaron los Usuarios')
@@ -56,7 +63,8 @@ export default {
     }
   },
   components: {
-    DataTableComp: () => import('../components/DataTable.vue')
+    // DataTableComp: () => import('../components/DataTable.vue')
+    DataTableComp: () => import('../components/DataTableSearch.vue')
   },
   created: function () {
     // `this` points to the vm instance

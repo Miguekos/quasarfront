@@ -1,7 +1,7 @@
 <template>
   <q-page padding class="docs-input row justify-center">
     <div style="width: 800px; max-width: 90vw;">
-      <p class="caption"> <strong>{{ titulo }}</strong><span style="float: right;"><q-btn size="sm" outline color="positive" label="nuevo" @click="customDialogModel = true" /></span></p>
+      <p class="caption"> <strong>{{ titulo }}</strong><span style="float: right;"><q-btn size="sm" color="secondary" label="nuevo" @click="customDialogModel = true" /></span></p>
       <q-table
         :data="datat"
         :columns="columnas"
@@ -20,6 +20,11 @@ export default {
     filas: [],
     info: []
   }),
+  methods: {
+    eliminarUser () {
+      console.log('esta es la funcion eliminar Usuario')
+    }
+  },
   created () {
     this.info = this.datat
     this.filas = this.columnas

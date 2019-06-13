@@ -66,16 +66,16 @@
                   class="q-mr-md"></q-checkbox>
                 {{ props.row.id }}
               </q-td>
-              <q-td key="name">{{ props.row.name }}</q-td>
-              <q-td key="email">{{ props.row.email }}</q-td>
-              <q-td key="role">{{ props.row.role }}</q-td>
+              <q-td :key="campos[0].name" :props="props">{{ props.row.nombre }}</q-td>
+              <q-td key="prestamo" :props="props">{{ props.row.prestamo }}</q-td>
+              <q-td key="fecha" :props="props">{{ props.row.fecha }}</q-td>
             </q-tr>
             <q-tr v-show="props.expand" :props="props">
               <q-td colspan="100%">
                 <div class="text-left">
-                  <strong>{{ props.row.name }}</strong> tiene una deuda por pagar de
-                  <b class="detalle">{{ props.row.email }}.</b> Responsable:
-                  <b>{{ props.row.role }}</b>
+                  <strong>{{ props.row.nombre }}</strong> tiene una deuda por pagar de
+                  <b class="detalle">{{ props.row.monto_a_apagar }}.</b> Responsable:
+                  <b>{{ props.row.agregado }}</b>
                 </div>
               </q-td>
             </q-tr>
@@ -114,10 +114,6 @@
 export default {
   // props: ['titulo', 'columns', 'datat'],
   props: {
-    urls: {
-      type: Array,
-      required: true
-    },
     titulo: {
       type: String,
       required: true
@@ -137,15 +133,15 @@ export default {
     selected: [],
     campos: [
       {
-        name: 'name'
+        name : 'nombre',
       },
       {
-        name: 'prestamo'
+        name:  'prestamo',
       },
       {
-        name: 'fecha'
-      }
-    ],
+        name : 'fecha',
+      },
+      ],
     paginationControl: { rowsPerPage: 6, page: 1 }
   }),
   methods: {
@@ -186,7 +182,7 @@ export default {
     },
     deleteCliente (item) {
       this.$axios
-        .delete(`${this.urls[0].base}${item.id}`)
+        .delete(`/api/clientes/${item.id}`)
         .then(response => {
           console.log(response)
           this.notifica('negative', 'delete', `Se elimino correctamente el cliente ${item.nombre}`, null)
